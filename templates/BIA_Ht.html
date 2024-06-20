@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تحسين خدمات النقل</title>
+</head>
+<body>
+    <h1>تحسين خدمات النقل</h1>
+    <form method="post">
+        <label for="capacity">أدخل سعة الشاحنة:</label><br>
+        <input type="number" id="capacity" name="capacity" required><br><br>
+        
+        <label for="num_items">أدخل عدد البضائع الممكنة:</label><br>
+        <input type="number" id="num_items" name="num_items" required><br><br>
+        
+        <div id="items">
+        </div>
+        
+        <button type="button" onclick="addItemFields()">إضافة بضائع</button><br><br>
+        
+        <label for="num_addresses">أدخل عدد العناوين:</label><br>
+        <input type="number" id="num_addresses" name="num_addresses" required><br><br>
+        
+        <div id="addresses">
+        </div>
+        
+        <button type="button" onclick="addAddressFields()">إضافة عناوين</button><br><br>
+        
+        <button type="submit">احسب الحل الأمثل</button>
+    </form>
+    
+    {% if max_value is not none and min_path is not none %}
+    <h2>النتائج:</h2>
+    <p>القيمة العليا للبضائع المحملة في الشاحنة: {{ max_value }}</p>
+    <p>الطريق الأقصر بين العناوين: {{ min_path }}</p>
+    {% endif %}
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
